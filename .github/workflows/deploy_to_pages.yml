@@ -59,8 +59,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-      
       
-      - run: cd www && npm ci
       - run: cd www && npm install
+      - run: cd www && npm ci
       - run: cd www && npm run build
       
       - name: Setup Pages
