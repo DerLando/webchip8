@@ -36,6 +36,13 @@ jobs:
       
       - run: wasm-pack build 
   
+      - name: Store generated package as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: package
+          path: pkg/
+          if-no-files-found: error
+  
   deploy:
     needs: release
     environment:
@@ -46,6 +53,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
+      - name: Load generated package
+        uses: actions/download-artifact@v3
+        with:
+          name: package
+      
+      - name: Display structure of downloaded files
+        run: ls      
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
