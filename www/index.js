@@ -1,5 +1,6 @@
 import {Chip8Emulator} from "walers";
 import {memory} from "walers/walers_bg";
+import './style.css';
 
 const CANVAS_WIDTH = 64;
 const CANVAS_HEIGHT = 32;

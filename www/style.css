@@ -1,0 +1,30 @@
+body {
+  background: #425DA8;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.grid-container {
+  width: 15%;
+  padding: 1%;
+  background: white;
+}
+
+.grid-cell {
+  float: left;
+  width: 25%;
+  height: 25%;
+}
+
+button.keyboard {
+  border-radius: 25%;
+  text-align: center;
+  font-size: 20px;
+  width: 80%;
+  height: 80%;
+  padding: 40%;
+  box-shadow: 5px 5px 2.5px rgba(0, 0, 0, 0.5) inset;
+}
