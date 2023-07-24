@@ -51,6 +51,14 @@ jobs:
         with:
           node-version: '14'
       
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-      
+      
       - run: cd www && npm ci
       - run: cd www && npm install
       - run: cd www && npm run build
