@@ -30,13 +30,14 @@ jobs:
         with:
           toolchain: stable
           target: wasm32-unknown-unknown
-      - uses: jetli/wasm-bindgen-action@v0.1.0
-      - uses: jetli/wasm-pack-action@v0.1.0
+      - uses: jetli/wasm-bindgen-action@v0.2.0
+      - uses: jetli/wasm-pack-action@v0.4.0
       - uses: actions/checkout@v3
       
       - run: wasm-pack build 
   
   deploy:
+    needs: release
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
