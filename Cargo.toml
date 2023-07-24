@@ -1,0 +1,28 @@
+[package]
+name = "walers"
+version = "0.1.0"
+authors = ["Lando Schumpich <lando.schumpich@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+wasm-bindgen = { version = "0.2.58", features = ["serde-serialize"] }
+console_error_panic_hook = { version = "0.1.6", optional = true }
+wee_alloc = { version = "0.4.5", optional = true }
+js-sys = "0.3.35"
+# chip8 = {git = "https://github.com/DerLando/chip8.git", version = "0.1"}
+chip8 = {path = "../../recreative/chip8", version = "0.1", features=["js"], default-features=false}
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.8"
+
+[dependencies.web-sys]
+version = "0.3.35"
+features = [
+  "console",
+]
