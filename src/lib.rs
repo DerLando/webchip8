@@ -37,4 +37,21 @@ impl Chip8Emulator {
     pub fn tick(&mut self) {
         self.emulator.tick();
     }
+    pub fn dump_registers(&self) -> js_sys::Uint8Array {
+        js_sys::Uint8Array::from(&self.emulator.dump_registers()[..])
+    }
+    pub fn dump_pc(&self) -> u16 {
+        self.emulator.pc()
+    }
+
+    pub fn dump_i(&self) -> u16 {
+        self.emulator.i()
+    }
+
+    pub fn dump_delay(&self) -> u8 {
+        self.emulator.delay()
+    }
+    pub fn dump_memory_u16(&self) -> js_sys::Uint16Array {
+        js_sys::Uint16Array::from(&self.emulator.dump_double_memory_around_pc()[..])
+    }
 }
