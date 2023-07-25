@@ -1,6 +1,7 @@
 import {Chip8Emulator} from "walers";
 import {memory} from "walers/walers_bg";
 import './style.css';
+var URL = require('url').URL;
 
 const CANVAS_WIDTH = 64;
 const CANVAS_HEIGHT = 32;
@@ -162,6 +163,31 @@ singleStepButton.addEventListener("click", event => {
   singleStep();
 });
 
+const uploadForm = document.querySelector('form');
+const romInput = document.getElementById("rom_input");
+uploadForm.addEventListener('submit', handleRomUpload);
 
-play();
+const isValidRomFile = (file) => {
+  if (file.name.length < 3) {return false;}
+  return file.name.substring(file.name.length - 4) === ".ch8";
+}
+
+async function handleRomUpload(event) {
+  event.preventDefault();
+  if(romInput.files.length === 0) {return;}
+  
+  let file = romInput.files[0];
+  
+  if(!isValidRomFile(file)) {return;}
+  
+  let payload = await file.arrayBuffer();
+  console.log("Received rom to load");
+  // Important to convert the raw buffer to the correct type here
+  emulator.load_rom(new Uint8Array(payload));
+  
+  play();
+  pause();
+}
+
+// play();
 pause();

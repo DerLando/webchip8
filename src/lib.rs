@@ -15,6 +15,7 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 #[wasm_bindgen]
 pub struct Chip8Emulator {
     emulator: Emulator,
+    rom: Option<Vec<u8>>,
 }
 
 #[wasm_bindgen]
@@ -23,11 +24,22 @@ impl Chip8Emulator {
         console_error_panic_hook::set_once();
         let mut emulator = Emulator::new();
         emulator.load_test_rom();
-        Self { emulator }
+        Self {
+            emulator,
+            rom: None,
+        }
+    }
+
+    pub fn reset(&mut self) {
+        match &self.rom {
+            None => self.load_rom(&[]),
+            Some(rom) => self.emulator.load_rom(&rom),
+        }
     }
 
     pub fn load_rom(&mut self, rom: &[u8]) {
-        self.emulator.load_rom(rom);
+        self.rom = Some(rom.to_vec());
+        self.emulator.load_rom(&rom);
     }
 
     pub fn is_pixel_on(&self, x: u8, y: u8) -> bool {
