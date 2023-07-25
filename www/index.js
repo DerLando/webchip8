@@ -122,6 +122,17 @@ const renderLoop = () => {
   animationId = requestAnimationFrame(renderLoop);
 }
 
+const resetButton = document.getElementById("reset");
+const resetEmulator = () => {
+  emulator.reset();
+  play();
+  pause();
+}
+
+resetButton.addEventListener('click', event => {
+  resetEmulator();
+});
+
 const isPaused = () => {
   return animationId === null;
 };
