@@ -15,6 +15,7 @@ const emulator = Chip8Emulator.new();
 const canvas = document.getElementById("display");
 canvas.width = CANVAS_WIDTH * PIXEL_SCALE;
 canvas.height = CANVAS_HEIGHT * PIXEL_SCALE;
+canvas.style.backgroundColor = BG_COLOR;
 const ctx = canvas.getContext("2d");
 
 const drawDisplay = () => {

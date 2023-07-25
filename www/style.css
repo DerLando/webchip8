@@ -1,5 +1,5 @@
 body {
-  background: #425DA8;
+  background: white;
 }
 
 .container {
@@ -17,6 +17,26 @@ body {
   float: left;
   width: 25%;
   height: 25%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+
+tr.highlight {
+  background-color: #dddddd;
 }
 
 button.keyboard {

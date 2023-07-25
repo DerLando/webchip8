@@ -1,35 +1,83 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Wasm template Rust</title>
-</head>
-<body>
-<div class="container">
-<canvas id="display"></canvas>
-</div>
-<div class="container">
-<div class="grid-container">
-<div class="grid-cell"><button class="keyboard" id="key_1">1</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_2">2</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_3">3</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_C">C</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_4">4</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_5">5</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_6">6</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_D">D</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_7">7</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_8">8</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_9">9</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_E">E</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_A">A</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_0">0</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_B">B</button></div>
-<div class="grid-cell"><button class="keyboard" id="key_F">F</button></div>
-</div>
-</div>
 
-<script src="./bootstrap.js"></script>
-<noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+<head>
+  <meta charset="utf-8">
+  <title>Wasm template Rust</title>
+</head>
+
+<body>
+  <div class="container">
+    <canvas id="display"></canvas>
+  </div>
+  <div class="container">
+    <div class="grid-container">
+      <div class="grid-cell"><button class="keyboard" id="key_1">1</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_2">2</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_3">3</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_C">C</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_4">4</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_5">5</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_6">6</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_D">D</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_7">7</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_8">8</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_9">9</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_E">E</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_A">A</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_0">0</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_B">B</button></div>
+      <div class="grid-cell"><button class="keyboard" id="key_F">F</button></div>
+    </div>
+
+    <div class="table-container">
+      <table id="memory">
+        <tr>
+          <th>Address</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td id="mem_ptr_-4">0x0200</td>
+          <td id="mem_val_-4">0x00EE</td>
+        </tr>
+        <tr>
+          <td id="mem_ptr_-3">0x0200</td>
+          <td id="mem_val_-3">0x00EE</td>
+        </tr>
+        <tr>
+          <td id="mem_ptr_-2">0x0200</td>
+          <td id="mem_val_-2">0x00EE</td>
+        </tr>
+        <tr>
+          <td id="mem_ptr_-1">0x0200</td>
+          <td id="mem_val_-1">0x00EE</td>
+        </tr>
+        <tr class="highlight">
+          <td id="mem_ptr_0">0x0200</td>
+          <td id="mem_val_0">0x01EE</td>
+        </tr>
+        <tr>
+          <td id="mem_ptr_1">0x0200</td>
+          <td id="mem_val_1">0x00EE</td>
+        </tr>
+        <tr>
+          <td id="mem_ptr_2">0x0200</td>
+          <td id="mem_val_2">0x00EE</td>
+        </tr>
+        <tr>
+          <td id="mem_ptr_3">0x0200</td>
+          <td id="mem_val_3">0x00EE</td>
+        </tr>
+        <tr>
+          <td id="mem_ptr_4">0x0200</td>
+          <td id="mem_val_4">0x00EE</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="./bootstrap.js"></script>
+  <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
 </body>
+
 </html>
