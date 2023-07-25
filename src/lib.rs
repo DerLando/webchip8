@@ -66,4 +66,10 @@ impl Chip8Emulator {
     pub fn dump_memory_u16(&self) -> js_sys::Uint16Array {
         js_sys::Uint16Array::from(&self.emulator.dump_double_memory_around_pc()[..])
     }
+    pub fn press_key(&mut self, key: u8) {
+        self.emulator.press_key(key);
+    }
+    pub fn release_key(&mut self, key: u8) {
+        self.emulator.release_key(key);
+    }
 }

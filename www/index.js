@@ -20,6 +20,7 @@ canvas.style.backgroundColor = BG_COLOR;
 const ctx = canvas.getContext("2d");
 
 const drawDisplay = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = PIXEL_COLOR;
   ctx.strokeStyle = BG_COLOR;
   for (let x = 0; x<64; x++) {
@@ -110,7 +111,45 @@ document.addEventListener('keydown', (event) => {
   console.log("codeValue: " + codeValue);
   
   if (codeValue === "KeyP") {handlePauseToggle();}
+  
+  if (codeValue === "Key1") {emulator.press_key(1);}
+  if (codeValue === "Key2") {emulator.press_key(2);}
+  if (codeValue === "Key3") {emulator.press_key(3);}
+  if (codeValue === "Key4") {emulator.press_key(12);}
+  if (codeValue === "KeyQ") {emulator.press_key(4);}
+  if (codeValue === "KeyW") {emulator.press_key(5);}
+  if (codeValue === "KeyE") {emulator.press_key(6);}
+  if (codeValue === "KeyR") {emulator.press_key(13);}
+  if (codeValue === "KeyA") {emulator.press_key(7);}
+  if (codeValue === "KeyS") {emulator.press_key(8);}
+  if (codeValue === "KeyD") {emulator.press_key(9);}
+  if (codeValue === "KeyF") {emulator.press_key(14);}
+  if (codeValue === "KeyZ") {emulator.press_key(10);}
+  if (codeValue === "KeyX") {emulator.press_key(0);}
+  if (codeValue === "KeyC") {emulator.press_key(11);}
+  if (codeValue === "KeyV") {emulator.press_key(15);}
 }, false);
+
+document.addEventListener('keyup', (event) => {
+  var codeValue = event.code;
+  
+  if (codeValue === "Key1") {emulator.release_key(1);}
+  if (codeValue === "Key2") {emulator.release_key(2);}
+  if (codeValue === "Key3") {emulator.release_key(3);}
+  if (codeValue === "Key4") {emulator.release_key(12);}
+  if (codeValue === "KeyQ") {emulator.release_key(4);}
+  if (codeValue === "KeyW") {emulator.release_key(5);}
+  if (codeValue === "KeyE") {emulator.release_key(6);}
+  if (codeValue === "KeyR") {emulator.release_key(13);}
+  if (codeValue === "KeyA") {emulator.release_key(7);}
+  if (codeValue === "KeyS") {emulator.release_key(8);}
+  if (codeValue === "KeyD") {emulator.release_key(9);}
+  if (codeValue === "KeyF") {emulator.release_key(14);}
+  if (codeValue === "KeyZ") {emulator.release_key(10);}
+  if (codeValue === "KeyX") {emulator.release_key(0);}
+  if (codeValue === "KeyC") {emulator.release_key(11);}
+  if (codeValue === "KeyV") {emulator.release_key(15);}
+})
 
 let animationId = null;
 
