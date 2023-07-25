@@ -111,12 +111,19 @@ const handlePauseToggle = () => {
   } else {
     pause();
   }
-  if (isPaused()) {
-    play();
-  } else {
-    pause();
-  }
 }
+
+const singleStepButton = document.getElementById("single-step");
+const singleStep = () => {
+  if(!isPaused()) {return;}
+  
+  play();
+  pause();
+}
+
+singleStepButton.addEventListener("click", event => {
+  singleStep();
+});
 
 
 play();
