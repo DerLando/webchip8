@@ -66,24 +66,58 @@ const updateMemory = () => {
   }
 }
 
-const handlePauseKeyPress = () => {
-  console.log("P pressed!");
-}
-
 document.addEventListener('keydown', (event) => {
   var keyValue = event.key;
   var codeValue = event.code;
   console.log("keyValue: " + keyValue);
   console.log("codeValue: " + codeValue);
   
-  if (codeValue === "KeyP") {handlePauseKeyPress();}
+  if (codeValue === "KeyP") {handlePauseToggle();}
 }, false);
+
+let animationId = null;
 
 const renderLoop = () => {
   updateMemory();
   drawDisplay();
   emulator.tick();
-  requestAnimationFrame(renderLoop);
+  animationId = requestAnimationFrame(renderLoop);
 }
 
-renderLoop();
+const isPaused = () => {
+  return animationId === null;
+};
+
+const playPauseButton = document.getElementById("play-pause");
+
+const play = () => {
+  playPauseButton.textContent = "⏸";
+  renderLoop();
+};
+
+const pause = () => {
+  playPauseButton.textContent = "▶️";
+  cancelAnimationFrame(animationId);
+  animationId = null;
+};
+
+playPauseButton.addEventListener("click", event => {
+  handlePauseToggle();
+});
+
+const handlePauseToggle = () => {
+  if (isPaused()) {
+    play();
+  } else {
+    pause();
+  }
+  if (isPaused()) {
+    play();
+  } else {
+    pause();
+  }
+}
+
+
+play();
+pause();
