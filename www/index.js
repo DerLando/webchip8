@@ -31,7 +31,56 @@ const drawDisplay = () => {
   }
 }
 
+const memoryTableAddresses = [
+  document.getElementById("mem_ptr_-4"),
+  document.getElementById("mem_ptr_-3"),
+  document.getElementById("mem_ptr_-2"),
+  document.getElementById("mem_ptr_-1"),
+  document.getElementById("mem_ptr_0"),
+  document.getElementById("mem_ptr_1"),
+  document.getElementById("mem_ptr_2"),
+  document.getElementById("mem_ptr_3"),
+  document.getElementById("mem_ptr_4"),
+];
+const memoryTableValues = [
+  document.getElementById("mem_val_-4"),
+  document.getElementById("mem_val_-3"),
+  document.getElementById("mem_val_-2"),
+  document.getElementById("mem_val_-1"),
+  document.getElementById("mem_val_0"),
+  document.getElementById("mem_val_1"),
+  document.getElementById("mem_val_2"),
+  document.getElementById("mem_val_3"),
+  document.getElementById("mem_val_4"),
+];
+const format_number_as_hex = (number) => {
+  return number.toString(16).toUpperCase();
+}
+const updateMemory = () => {
+  let memoryDump = emulator.dump_memory_u16();
+  let pc = emulator.dump_pc() - 8;
+  for (let i = 1; i < memoryDump.length - 1; i++) {
+    memoryTableAddresses[i - 1].innerHTML = format_number_as_hex(pc);  
+    memoryTableValues[i - 1].innerHTML = format_number_as_hex(memoryDump[i]);  
+    pc += 2;
+  }
+}
+
+const handlePauseKeyPress = () => {
+  console.log("P pressed!");
+}
+
+document.addEventListener('keydown', (event) => {
+  var keyValue = event.key;
+  var codeValue = event.code;
+  console.log("keyValue: " + keyValue);
+  console.log("codeValue: " + codeValue);
+  
+  if (codeValue === "KeyP") {handlePauseKeyPress();}
+}, false);
+
 const renderLoop = () => {
+  updateMemory();
   drawDisplay();
   emulator.tick();
   requestAnimationFrame(renderLoop);
