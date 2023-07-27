@@ -1,8 +1,8 @@
 import {Chip8Emulator} from "walers";
 import {memory} from "walers/walers_bg";
 import './style.css';
-var URL = require('url').URL;
 
+var TICKS_PER_FRAME = 10;
 const CANVAS_WIDTH = 64;
 const CANVAS_HEIGHT = 32;
 const PIXEL_SCALE = 10;
@@ -31,6 +31,14 @@ const drawDisplay = () => {
       ctx.strokeRect(x * PIXEL_SCALE, y * PIXEL_SCALE, PIXEL_SCALE, PIXEL_SCALE);
     } 
   }
+}
+
+const slider = document.getElementById("slider");
+const sliderValue = document.getElementById("slider-value");
+sliderValue.textContent = slider.value;
+slider.oninput = function() {
+  sliderValue.textContent = this.value;
+  TICKS_PER_FRAME = this.value;
 }
 
 const memoryTableAddresses = [
@@ -64,8 +72,8 @@ const updateMemory = () => {
   let memoryDump = emulator.dump_memory_u16();
   let pc = emulator.dump_pc() - 8;
   for (let i = 1; i < memoryDump.length; i++) {
-    memoryTableAddresses[i - 1].innerHTML = format_number_as_hex(pc);  
-    memoryTableValues[i - 1].innerHTML = format_number_as_hex(memoryDump[i]);  
+    memoryTableAddresses[i - 1].textContent = format_number_as_hex(pc);  
+    memoryTableValues[i - 1].textContent = format_number_as_hex(memoryDump[i]);  
     pc += 2;
   }
 }
@@ -96,12 +104,12 @@ const pcCell = document.getElementById("reg_val_pc");
 const updateRegisters = () => {
   let registerValues = emulator.dump_registers();
   for(let i = 0; i < registerValues.length; i++) {
-    registerTableValues[i].innerHTML = registerValues[i];
+    registerTableValues[i].textContent = registerValues[i];
   }
-  // soundRegisterCell.innerHTML = emulator.dump_sound();
-  delayRegisterCell.innerHTML = emulator.dump_delay();
-  iRegisterCell.innerHTML = format_number_as_hex(emulator.dump_i());
-  pcCell.innerHTML = format_number_as_hex(emulator.dump_pc());
+  // soundRegisterCell.textContent = emulator.dump_sound();
+  delayRegisterCell.textContent = emulator.dump_delay();
+  iRegisterCell.textContent = format_number_as_hex(emulator.dump_i());
+  pcCell.textContent = format_number_as_hex(emulator.dump_pc());
 }
 
 document.addEventListener('keydown', (event) => {
@@ -157,7 +165,9 @@ const renderLoop = () => {
   updateMemory();
   updateRegisters();
   drawDisplay();
+  for(let i = 0; i < TICKS_PER_FRAME; i++) {
   emulator.tick();
+      }
   animationId = requestAnimationFrame(renderLoop);
 }
 
