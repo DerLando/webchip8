@@ -23,10 +23,9 @@ impl Chip8Emulator {
     pub fn new() -> Self {
         console_error_panic_hook::set_once();
         let mut emulator = Emulator::new();
-        emulator.load_test_rom();
         Self {
             emulator,
-            rom: None,
+            rom: Some((*include_bytes!("../roms/my_logo.ch8")).into()),
         }
     }
 

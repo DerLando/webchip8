@@ -2,7 +2,7 @@ import {Chip8Emulator} from "walers";
 import {memory} from "walers/walers_bg";
 import './style.css';
 
-var TICKS_PER_FRAME = 10;
+var TICKS_PER_FRAME = 1;
 const CANVAS_WIDTH = 64;
 const CANVAS_HEIGHT = 32;
 const PIXEL_SCALE = 10;
@@ -23,8 +23,8 @@ const drawDisplay = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = PIXEL_COLOR;
   ctx.strokeStyle = BG_COLOR;
-  for (let x = 0; x<64; x++) {
-    for (let y = 0; y<32; y++) {
+  for (let x = 0; x<CANVAS_WIDTH; x++) {
+    for (let y = 0; y<CANVAS_HEIGHT; y++) {
       if (!emulator.is_pixel_on(x, y)) {continue;}
 
       ctx.fillRect(x * PIXEL_SCALE, y * PIXEL_SCALE, PIXEL_SCALE, PIXEL_SCALE);
@@ -249,5 +249,6 @@ async function handleRomUpload(event) {
   pause();
 }
 
-// play();
-pause();
+emulator.reset();
+play();
+// pause();
