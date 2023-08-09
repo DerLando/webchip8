@@ -4,6 +4,8 @@ This crate enables running a [chip 8](https://en.wikipedia.org/wiki/CHIP-8) emul
 
 Internally, a thin wrapper around my [chip8 crate](https://github.com/DerLando/chip8) is exposed via [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen). This wrapper can either be run locally, or hosted at github pages using the [workflow](https://github.com/DerLando/webchip8/blob/main/.github/workflows/deploy_to_pages.yml) set up for it.
 
+A running copy of the build artifact is hosted at my [Github Pages](https://derlando.github.io/webchip8/)
+
 ## Installation
 
 **Webchip8** has no requirements other than the one needed for `wasm-bindgen`. Follow the [installation guide](https://rustwasm.github.io/docs/book/game-of-life/setup.html) for it and afterwards **Webchip8** can be run locally from the command line:
