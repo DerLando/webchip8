@@ -5,7 +5,8 @@ import './style.css';
 var TICKS_PER_FRAME = 1;
 const CANVAS_WIDTH = 64;
 const CANVAS_HEIGHT = 32;
-const PIXEL_SCALE = 10;
+const ASPECT_RATIO = CANVAS_HEIGHT / CANVAS_WIDTH;
+var PIXEL_SCALE = 10;
 const GRID_COLOR = "#FFFFFF";
 const BG_COLOR = "#425DA8";
 const PIXEL_COLOR = "#F5E647";
@@ -18,6 +19,18 @@ canvas.width = CANVAS_WIDTH * PIXEL_SCALE;
 canvas.height = CANVAS_HEIGHT * PIXEL_SCALE;
 canvas.style.backgroundColor = BG_COLOR;
 const ctx = canvas.getContext("2d");
+
+window.addEventListener('resize', fitCanvas, false);
+
+const displayContainer = document.getElementById("display-container");
+
+function fitCanvas() {
+  console.log("Resize");
+  canvas.width = window.innerWidth * 0.85;
+  canvas.height = canvas.width * ASPECT_RATIO;
+  PIXEL_SCALE = canvas.width / 64;
+}
+fitCanvas();
 
 const drawDisplay = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);

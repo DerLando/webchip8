@@ -7,6 +7,11 @@
 </head>
 
 <body>
+  <div class="display-container">
+  <div class="container" id="display-container">
+    <canvas id="display"></canvas>
+  </div>
+  </div>
   <div class="container">
     <button id="reset">🔄</button>
     <button id="play-pause"></button>
@@ -21,9 +26,6 @@
     <label>Ticks per frame</label>
     <label id="slider-value"></label>
     <input type="range" min="1" max="10" value="1" class="slider" id="slider">
-  </div>
-  <div class="container">
-    <canvas id="display"></canvas>
   </div>
   <div class="container">
     <div class="grid-container">
