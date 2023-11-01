@@ -22,7 +22,7 @@ chip8 = {git = "https://github.com/DerLando/chip8.git", version = "0.1", feature
 wasm-bindgen-test = "0.3.8"
 
 [dependencies.web-sys]
-version = "0.3.35"
+version = "0.3.65"
 features = [
   "console",
 ]
