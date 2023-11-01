@@ -19,7 +19,7 @@ chip8 = {git = "https://github.com/DerLando/chip8.git", version = "0.1", feature
 # chip8 = {path = "../../recreative/chip8", version = "0.1", features=["js"], default-features=false}
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.8"
+wasm-bindgen-test = "0.3.38"
 
 [dependencies.web-sys]
 version = "0.3.35"
